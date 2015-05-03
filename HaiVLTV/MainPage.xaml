@@ -1,0 +1,164 @@
+﻿<phone:PhoneApplicationPage
+    x:Class="HaiVLTV.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="Portrait" Orientation="Portrait"
+    xmlns:delay="clr-namespace:Delay;assembly=PhonePerformance"
+    shell:SystemTray.IsVisible="False" >
+
+    <phone:PhoneApplicationPage.Resources>
+        <ResourceDictionary Source="/HaiVLTV;component/Resources/style.xaml" />
+    </phone:PhoneApplicationPage.Resources>
+    <Grid x:Name="LayoutRoot">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid  Height="65" Grid.Row="0" Opacity="1.0" Background="WhiteSmoke">
+            <StackPanel Orientation="Horizontal">
+                <Image Stretch="UniformToFill" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0" Height="50" Width="50" Source="/Assets/Television.png"/>
+                <TextBlock Text="HaiVL TV" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,10,0,10"  Style="{StaticResource TextBlockLargeStyle}" Foreground="#FF02637C">
+                    <TextBlock.RenderTransform>
+                        <TranslateTransform X="0.5" Y="0"/>
+                    </TextBlock.RenderTransform>
+                </TextBlock>
+            </StackPanel>
+        </Grid>
+        <Grid x:Name="ContentPanel" Grid.Row="1" Margin="0,0,0,0">
+            <ListBox Grid.Row="0" x:Name="lstScanweb" SelectionChanged="lstScanweb_SelectionChanged">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <Border BorderThickness="0.9"
+                                Width="Auto"  
+                                Height="Auto"  
+                                Margin="0,0,0,2">
+                            <Border.BorderBrush>
+                                <SolidColorBrush Color="#f7f3a9"/>
+                            </Border.BorderBrush>
+
+                            <Grid Background="#87c540">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+                                <Grid Background="#FF007ACC" Grid.Row="0" Height="40">
+                                    <TextBlock TextAlignment="Center" Text="{Binding Title}"  HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10,0,0,0" Foreground="White" FontSize="23" FontFamily="Segoe UI Semibold"/>
+                                </Grid>
+                                <Grid Grid.Row="1">
+                                    <StackPanel Tap="xxx_tap" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="20,0,0,0" >
+                                        <Image x:Name="ImageView" Source="/Assets/view_icon.png" />
+                                        <TextBlock Text="{Binding View}" Margin="10,0,0,0" VerticalAlignment="Center" Foreground="White"/>
+                                    </StackPanel>
+                                    <StackPanel Tap="xxx_tap" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="150,0,0,0" >
+                                        <Image x:Name="IMageComents" Source="/Assets/comment_icon.png" />
+                                        <TextBlock Text="{Binding Comments}" Margin="10,0,0,0" VerticalAlignment="Center" Foreground="White"/>
+                                    </StackPanel>
+                                    <StackPanel  Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="230,0,0,0" >
+
+
+                                        <TextBlock Text="Tap to play" Margin="10,0,0,0" VerticalAlignment="Center" Foreground="White"/>
+                                        <Image Source="/Assets/icontap.png" Height="40" Width="40" />
+                                    </StackPanel>
+                                </Grid>
+                                <Grid Grid.Row="2">
+                                    <!--<Image Source="{Binding Imgsrc}" Stretch="UniformToFill" />-->
+                                    <Image delay:LowProfileImageLoader.UriSource="{Binding Imgsrc}"   Stretch="UniformToFill"  />
+                                    <Image x:Name="ImageTap" Height="48" Width="48" VerticalAlignment="Center" HorizontalAlignment="Center" Source="/Assets/Media-Play.png" Tap="Image_Tap_1"/>
+                                </Grid>
+                            </Grid>
+                        </Border>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+            <Border Visibility="Collapsed"  
+                    Opacity="1" 
+                    x:Name="fuckyou"
+                     CornerRadius="50"   
+                     BorderThickness="4" 
+                     VerticalAlignment="Bottom" 
+                     Margin="0,0,10,10" 
+                     HorizontalAlignment="Right" 
+                    Height="70"
+                     Width="70">
+                <Border.Background>
+                    <SolidColorBrush Color="White"/>
+                </Border.Background>
+                <StackPanel HorizontalAlignment="Center" 
+                        Orientation="Vertical" 
+                        Width="70" 
+                        VerticalAlignment="Center" Height="70" Margin="-4">
+                    <Button x:Name="loadhot"
+                		Click="loadhot_Click"
+                		VerticalAlignment="Center"
+                            HorizontalAlignment="Center"
+                        Width="70"    
+                		Height="70"
+                            
+                            BorderThickness="0"
+                            Padding="0"
+                            BorderBrush="#FF00FFB9"  >
+                        <Button.Background>
+                            <ImageBrush Stretch="Uniform" ImageSource="/Assets/Plus.png"/>
+                        </Button.Background>
+                    </Button>
+                </StackPanel>
+            </Border>
+
+
+            <Border Visibility="Collapsed" 
+                    Opacity="1" 
+                    x:Name="fuckyouvideo"
+                     CornerRadius="50"   
+                     BorderThickness="4" 
+                     VerticalAlignment="Bottom" 
+                     Margin="10,0,0,10" 
+                     HorizontalAlignment="Left" 
+                     Width="70"
+                    Height="70">
+
+
+                <Border.Background>
+                    <SolidColorBrush Color="White"/>
+                </Border.Background>
+                <StackPanel HorizontalAlignment="Center" 
+                        Orientation="Vertical" 
+                        Width="70" 
+                           
+                        VerticalAlignment="Center" Height="70" Margin="-4">
+                    <Button x:Name="loadvideo"
+                		Click="loadvideo_Click"
+                		VerticalAlignment="Center"
+                            HorizontalAlignment="Center"
+                        Width="70"    
+                		Height="70"
+                            BorderThickness="0"
+                           
+                            Padding="0"
+                            BorderBrush="#FF00FFB9"  >
+                        <Button.Background>
+                            <ImageBrush Stretch="Uniform" ImageSource="/Assets/Plus.png"/>
+                        </Button.Background>
+                    </Button>
+                </StackPanel>
+            </Border>
+        </Grid>
+    </Grid>
+    <phone:PhoneApplicationPage.ApplicationBar>
+        <shell:ApplicationBar x:Name="appBAr" BackgroundColor="#FF1C6E" Mode="Minimized">
+            <shell:ApplicationBarIconButton x:Name="btnReFresh" IconUri="/Assets/Media-Play-02.png" Text="VL Video" Click="btnReFresh_Click"/>
+            <shell:ApplicationBarIconButton IconUri="/Assets/AppBar/favs.png" Text=" vl Hot" Click="ApplicationBarIconButton_Click"/>
+            <shell:ApplicationBarIconButton IconUri="/Assets/About.png" Text="about" Click="btnAbout_Click" x:Name="btnAbout"/>
+
+        </shell:ApplicationBar>
+    </phone:PhoneApplicationPage.ApplicationBar>
+
+</phone:PhoneApplicationPage>
