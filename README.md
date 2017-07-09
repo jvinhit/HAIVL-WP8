@@ -1,8 +1,6 @@
-# HAIVL-WP8
-Regex app windows Phone 8. 
-
-
 <p align="center">
+    <h2>HAIVL-WP8</h2>
+    Regex app windows Phone 8. 
   <b>Link store:</b><br>
   <a href="https://www.microsoft.com/en-us/store/p/haivl-tv-pro/9wzdncrdg1cw?rtc=1#">HAIVL-WP8</a>
   <br><br>
